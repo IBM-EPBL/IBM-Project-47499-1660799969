@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example -->
+<html class="no-js uk-notouch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <script crossorigin="anonymous" src="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example" async=""></script><script src="./mohan_files/rules-p-de_F6qVUp9bug.js.download" async=""></script><script type="text/javascript" async="" src="./mohan_files/munchkin.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./mohan_files/www-widgetapi.js.download" async=""></script><script type="text/javascript" async="" src="./mohan_files/igY.js.download"></script><script type="text/javascript" async="" src="./mohan_files/destination"></script><script src="./mohan_files/web_surveys.js.download" async=""></script><script type="text/javascript" async="" src="./mohan_files/heap-150403558.js.download"></script><script type="text/javascript" async="" src="./mohan_files/insight.min.js.download"></script><script src="./mohan_files/731950963606637" async=""></script><script async="" src="./mohan_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./mohan_files/heap-1541905715.js.download"></script><script src="./mohan_files/bat.js.download" async=""></script><script src="./mohan_files/aquant.js.download" async="" type="text/javascript"></script><script async="" src="./mohan_files/fbds.js.download"></script><script type="text/javascript" async="" src="./mohan_files/uwt.js.download"></script><script async="" src="./mohan_files/analytics.js.download"></script><script type="text/javascript" async="" src="./mohan_files/elqCfg.min.js.download"></script><script async="" src="./mohan_files/datadog-rum-v4.js.download"></script><script type="text/javascript" async="" src="./mohan_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-1eZXe/MLiopvjKxX8F0I+6LXJu6cDaNupm7t7qbmZNrERttjt+hLGDuOPUES/50P"></script><script async="" src="./mohan_files/gtm.js.download"></script><script type="text/javascript" async="" src="./mohan_files/mixpanel-2.2.min.js.download"></script><script>
+  var twilio = twilio || {};
+  twilio.environment = "prod";
+  twilio.baseUrl = "https://www.twilio.com";
+  twilio.DOCSEARCH_APP_ID = "OOAM14PGB2";
+  twilio.DOCSEARCH_API_KEY = "22caea5865713b51c9dc8953bba2db41";
+  twilio.FACEBOOK_APP_ID = "414254592083321";
+
+
+</script>
+
+    <script>
+  
+    window.experiment = '';
+  
+</script>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width">
+    
+      
+    
+
+    
+
+    <title>
+      v3 API Python Code Example | Twilio
+    </title>
+
+    
+      <link rel="canonical" href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example">
+    
+
+    
+      <link rel="alternate" href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example" hreflang="en-us">
+    
+
+    
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/favicon.6886d29ef.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-57x57.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-60x60.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-72x72.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-76x76.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-114x114.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-120x120.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-144x144.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-152x152.6886d29ef.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/apple-icon-180x180.6886d29ef.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/android-icon-192x192.6886d29ef.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/favicon-32x32.6886d29ef.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/favicon-96x96.6886d29ef.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://docs.sendgrid.com/docs/static/sendgrid/favicons/favicon-16x16.6886d29ef.png">
+
+
+    
+    <link rel="stylesheet" href="./mohan_files/fonts.min.6886d29ef.css">
+    <link rel="stylesheet" href="./mohan_files/font-awesome.min.6886d29ef.css">
+    <link rel="stylesheet" href="./mohan_files/devicon.min.6886d29ef.css">
+    <link rel="stylesheet" href="./mohan_files/twilio-icons.6886d29ef.css">
+
+    
+    <meta property="og:title" content="v3 API Python Code Example">
+    <meta property="og:description" content="">
+    
+    <meta property="og:url" content="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example?utm_source=docs&amp;utm_medium=social&amp;utm_campaign=guides_tags">
+
+    
+    <meta property="twitter:title" content="v3 API Python Code Example">
+    <meta property="twitter:description" content="">
+    
+
+    
+    
+    <meta property="fb:app_id" content="414254592083321">
+    
+
+    
+
+    
+      <link rel="stylesheet" href="./mohan_files/docs.min.6886d29ef.css">
+      <link rel="stylesheet" media="print" href="./mohan_files/docs.min.6886d29ef.css">
+    
+
+    <!--  Stylesheet for docsearch -->
+    <link rel="stylesheet" href="./mohan_files/docsearch.min.css">
+
+    
+    
+  <style type="text/css">.txlive {display: none;}
+</style><style type="text/css" data-href="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css">pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+</style><style type="text/css" data-href="node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  /* Same as .prism’s padding-top */
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+@media print {
+  .line-highlight {
+    /*
+		 * This will prevent browsers from replacing the background color with white.
+		 * It's necessary because the element is layered on top of the displayed code.
+		 */
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+.line-highlight:before,
+.line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+.line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}
+.line-numbers .line-highlight:before,
+.line-numbers .line-highlight:after {
+  content: none;
+}
+pre[id].linkable-line-numbers span.line-numbers-rows {
+  pointer-events: all;
+}
+pre[id].linkable-line-numbers span.line-numbers-rows > span:before {
+  cursor: pointer;
+}
+pre[id].linkable-line-numbers span.line-numbers-rows > span:hover:before {
+  background-color: rgba(128, 128, 128, .2);
+}
+</style><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script type="text/javascript" src="./mohan_files/manifest.jsonp"></script><style type="text/css">.txlive-langselector { position:fixed;z-index:999999;min-width: 120px;line-height:32px;background-color:rgba( 0,0,0,0.75 );box-shadow: 0 0 4px rgba( 0,0,0,0.3 );color: #fff;font-size: 14px;font-family: inherit; }.txlive-langselector * { margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;border-radius: 0;-moz-border-radius:0;-webkit-border-radius:0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-border-radius:0;opacity:1; }.txlive-langselector.txlive-langselector-topleft { top:0;left:0;right:auto;bottom:auto;border-radius: 0 0 2px 0;-moz-border-radius: 0 0 2px 0;-webkit-border-radius: 0 0 2px 0; }.txlive-langselector.txlive-langselector-topright { top:0;left:auto;right:0;bottom:auto;border-radius: 0 2px 0 0;-moz-border-radius: 0 2px 0 0;-webkit-border-radius: 0 2px 0 0; }.txlive-langselector.txlive-langselector-bottomleft { top:auto;left:0;right:auto;bottom:0;border-radius: 0 2px 0 0;-moz-border-radius: 0 2px 0 0;-webkit-border-radius: 0 2px 0 0; }.txlive-langselector.txlive-langselector-bottomright { top:auto;left:auto;right:0;bottom:0;border-radius: 2px 0 0 0;-moz-border-radius: 2px 0 0 0;-webkit-border-radius: 2px 0 0 0; }.txlive-langselector .txlive-langselector-toggle { overflow: hidden;display: block;padding:2px 16px;width: 100%;height:36px;cursor:pointer;cursor:hand; }.txlive-langselector.txlive-langselector-topleft .txlive-langselector-toggle { overflow: hidden;display: block;border-top:2px solid #006f9f;padding:2px 16px;height:36px;line-height:32px;cursor:pointer;cursor:hand; }.txlive-langselector.txlive-langselector-topright .txlive-langselector-toggle { overflow: hidden;display: block;border-top:2px solid #006f9f;padding:2px 16px;height:36px;line-height:32px;cursor:pointer;cursor:hand; }.txlive-langselector.txlive-langselector-bottomleft .txlive-langselector-toggle { overflow: hidden;display: block;border-bottom:2px solid #006f9f;padding:2px 16px;height:36px;line-height:32px;cursor:pointer;cursor:hand; }.txlive-langselector.txlive-langselector-bottomright .txlive-langselector-toggle { overflow: hidden;display: block;border-bottom:2px solid #006f9f;padding:2px 16px;height:36px;line-height:32px;cursor:pointer;cursor:hand; }.txlive-langselector .txlive-langselector-current { float: left;padding: 0;max-width: 200px;overflow:hidden;white-space: nowrap;text-overflow:ellipsis; }.txlive-langselector .txlive-langselector-marker { float: right;display: block;position:relative;width:0;height:0;margin-left:8px;margin-top: 13px;border-right:4px dashed transparent;border-left:4px dashed transparent;}.txlive-langselector-topright .txlive-langselector-marker,.txlive-langselector-topleft .txlive-langselector-marker {border-top:4px solid #fff;}.txlive-langselector-bottomright .txlive-langselector-marker,.txlive-langselector-bottomleft .txlive-langselector-marker {border-bottom:4px solid #fff;}.txlive-langselector-list { position:absolute;width: 100%;margin:0;padding:10px 0;display:none;background-color:#eaf1f7;box-shadow: 0 0 4px rgba( 0,0,0,0.3 );color:#666;list-style-type:none; }.txlive-langselector-list.txlive-langselector-list-opened { display:block;max-height:315px;overflow:auto; }.txlive-langselector-list > li {padding:0 16px;width:100%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;}.txlive-langselector-list > li:hover {background-color:#b0b9c1;color:#fff;cursor:pointer;cursor:hand;}.txlive-langselector-topright > .txlive-langselector-list {top:40px;left:auto;right:0;bottom:auto;border-bottom: 1px solid #f4f7f9;}.txlive-langselector-topleft > .txlive-langselector-list {top:40px;left:0;right:auto;bottom:auto;border-bottom: 1px solid #f4f7f9;}.txlive-langselector-bottomright > .txlive-langselector-list {top:auto;left:auto;right:0;bottom:40px;border-top: 1px solid #f4f7f9;}.txlive-langselector-bottomleft > .txlive-langselector-list {top:auto;left:0;right:auto;bottom:40px;border-top: 1px solid #f4f7f9;}.txlive-langselector-topright > .txlive-langselector-list,.txlive-langselector-bottomright > .txlive-langselector-list {border-radius: 2px 0 0 2px;-moz-border-radius: 2px 0 0 2px;-webkit-border-radius: 2px 0 0 2px;}.txlive-langselector-topleft > .txlive-langselector-list,.txlive-langselector-bottomleft > .txlive-langselector-list {border-radius: 0 2px 2px 0;-moz-border-radius: 0 2px 2px 0;-webkit-border-radius: 0 2px 2px 0;}</style><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="./mohan_files/f.txt"></script><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="./mohan_files/munchkin.js(1).download"></script><script src="./mohan_files/5320781.js.download" type="text/javascript" async="" data-ueto="ueto_a248bc776f"></script><link href="./mohan_files/fonts.css" rel="stylesheet" type="text/css"><style type="text/css" id="qual_style-hpb"></style><style type="text/css" id="qual_style-hea"></style></head>
+
+  <body class="
+    
+      apireference
+    
+    
+    
+    sendgrid
+  ">
+
+    
+    <div class="docs-banner">
+        <div class="docs-seasonal-banner">
+            
+        </div>
+<nav class="docs-nav docs-layout-nav">
+  <div class="docs-nav__brand">
+    
+<a href="https://docs.sendgrid.com/" class="docs-nav__link router-link-exact-active router-link-active" data-glinktype="site navigation" data-glinklocation="docs" data-glinkname="logo">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 792 230.7" height="3rem" width="9rem" style="enable-background:new 0 0 792 230.7;" xml:space="preserve">
+    <style type="text/css">
+        .st0{fill:#FFFFFF;}
+        .st1{fill:#FFFFFF;}
+        .st2{fill:#99E1F4;}
+        .st3{fill:#1A82E2;}
+        .st4{fill:#00B2E3;}
+        .st5{fill:#009DD9;}
+        .st6{opacity:0.35;fill:#FFFFFF;}
+        .st7{opacity:0.75;fill:#FFFFFF;}
+    </style>
+    <g>
+        <path class="st1" d="M179.3,176.3l18.5-14.5c5.2,9,13.5,14.2,23,14.2c10.3,0,15.8-6.7,15.8-14c0-8.7-10.6-11.5-21.9-15
+        c-14.2-4.4-30.1-9.9-30.1-30.2c0-17,14.8-30.5,35.3-30.5c17.3,0,27.2,6.5,35.8,15.4l-16.7,12.6c-4.4-6.5-10.6-10-18.9-10
+        c-9.4,0-14.5,5.1-14.5,11.8c0,8.1,10.2,10.9,21.5,14.7c14.4,4.7,30.7,11,30.7,31.4c0,16.9-13.4,33.1-36.8,33.1
+        C201.7,195.4,188.9,187.2,179.3,176.3z M341.9,121.2h19.8v8.1c4.7-6,11.8-9.6,20.1-9.6c17.1,0,27.5,11,27.5,29.8v44.3H389v-41.7
+        c0-9.7-4.5-15.4-13.4-15.4c-7.6,0-13.8,5.2-13.8,17.4v39.7h-19.9V121.2z M413.9,157.6c0-25.7,18.9-37.8,35.3-37.8
+        c9.4,0,16.9,3.5,21.7,8.6V87.8h19.9v106.1h-19.9v-8.1c-4.8,5.7-12.5,9.6-21.9,9.6C433.5,195.4,413.9,183.1,413.9,157.6z
+        M471.4,157.4c0-10.8-7.8-19.5-18.6-19.5c-11,0-19.5,8.3-19.5,19.5c0,11.2,8.4,19.6,19.5,19.6C463.6,177,471.4,168.2,471.4,157.4z
+        M495.4,140.9c0-30.2,22.8-54.5,54.2-54.5c15.7,0,28.9,5.7,38.5,14.7c3.9,3.7,7.2,7.9,9.8,12.5l-17.7,10.8
+        c-6.5-12.1-16.6-18.3-30.4-18.3c-19.3,0-34.3,15.8-34.3,34.9c0,19.5,14.7,34.9,35,34.9c15.4,0,26.3-8.7,30.1-22.2h-33.3v-19.3h55.1
+        v8.1c0,28.5-20.3,53-51.9,53C517.3,195.4,495.4,170.2,495.4,140.9z M607.4,121.2h19.8v11.9c3.6-7.6,10.2-11.9,20.1-11.9h8
+        l-7.2,19.3h-5.4c-10.6,0-15.3,5.5-15.3,19v34.3h-19.9V121.2z M660.4,121.2h19.9v72.7h-19.9v-53.3l-7.2,0L660.4,121.2z M670.4,110.2
+        c6.6,0,11.9-5.3,11.9-11.9c0-6.6-5.3-11.9-11.9-11.9c-6.6,0-11.9,5.3-11.9,11.9C658.5,104.8,663.8,110.2,670.4,110.2z M685,157.6
+        c0-25.7,18.9-37.8,35.3-37.8c9.4,0,16.9,3.5,21.7,8.6V87.8h19.9v106.1H742v-8.1c-4.8,5.7-12.5,9.6-21.9,9.6
+        C704.6,195.4,685,183.1,685,157.6z M742.6,157.4c0-10.8-7.8-19.5-18.6-19.5c-11,0-19.5,8.3-19.5,19.5c0,11.2,8.4,19.6,19.5,19.6
+        C734.7,177,742.6,168.2,742.6,157.4z M337.2,157.4c0-20.9-15.3-37.6-37.5-37.6c-20.9,0-37.8,16.9-37.8,37.8
+        c0,20.9,15.7,37.8,38.4,37.8c15.7,0,27-7.6,33.3-18.4l-15.8-9.4c-3.3,6.4-9.8,10.4-17.4,10.4c-10.5,0-17-5.2-19.3-13.2h56.1V157.4z
+        M282,148.7c3.1-6.8,9.4-11.5,17.9-11.5c8.4,0,14.7,3.9,17.3,11.5H282z"></path>
+    </g>
+    <g>
+        <rect x="70.6" y="151.5" class="st2" width="42.4" height="42.4"></rect>
+        <polygon class="st2" points="70.6,109 70.6,109 70.6,109 28.2,109 28.2,151.5 70.6,151.5  "></polygon>
+        <rect x="28.2" y="151.5" class="st3" width="42.4" height="42.4"></rect>
+        <polygon class="st4" points="155.5,109 155.5,109 113.1,109 113.1,151.5 155.5,151.5 155.5,109  "></polygon>
+        <rect x="70.6" y="66.6" class="st4" width="42.4" height="42.4"></rect>
+        <polygon class="st5" points="70.6,109 70.6,151.5 113.1,151.5 113.1,109 113.1,109  "></polygon>
+        <rect x="113.1" y="66.6" class="st3" width="42.4" height="42.4"></rect>
+    </g>
+    <g>
+        <g>
+            <path class="st1" d="M199.4,41v24.7h-5.7V41h-8.8V36h23.4l0,4.9H199.4z"></path>
+            <path class="st1" d="M249.9,65.7h-5.4l-6.6-21.6l-6.6,21.6h-5.4l-8.3-29.8l6,0.1l5.5,21l6.2-21h5.7l6.2,21l5.4-21h5.7L249.9,65.7z
+            "></path>
+            <path class="st1" d="M269.7,65.7V36h5.7v29.7H269.7z"></path>
+            <path class="st1" d="M288.7,65.7V36h5.7v24.7h9.9l0.1,5H288.7z"></path>
+            <path class="st1" d="M316.2,65.7V36h5.7v29.7H316.2z"></path>
+            <path class="st1" d="M348,66.3c-8.4,0-13.9-6.2-13.9-15.4c0-9.2,5.5-15.4,14-15.4c8.5,0,13.9,6.2,13.9,15.4
+            C361.9,60,356.5,66.3,348,66.3z M348,40.2c-5.1,0-8.1,4.2-8.1,10.7s3.1,10.7,8.1,10.7c5.1,0,8.2-4.2,8.2-10.7S353.1,40.2,348,40.2
+            z"></path>
+        </g>
+    </g>
+</svg>
+</a>
+  </div>
+     <ul class="docs-nav__primary">
+       </ul>
+  <ul class="docs-nav__secondary">
+    <li class="docs-nav__docsearch">
+      <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="search" name="q" placeholder="Search" id="docsearch_sendgrid" class="ds-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Whitney SSm A&quot;, &quot;Whitney SSm B&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span>
+    </li>
+<li class="docs-nav__item">
+    <a href="https://app.sendgrid.com/" class="sendgrid docs-nav__login" data-glinktype="cta-link" data-glinklocation="docs" data-glinkname="sendgrid-app">
+        Login
+    </a>
+</li>
+<li class="docs-nav__item">
+    <a href="https://signup.sendgrid.com/" class="sendgrid docs-nav__signup" data-glinktype="cta-link" data-glinklocation="docs" data-glinkname="sendgrid-app">
+        Start for Free
+    </a>
+</li>
+  </ul>
+  <span class="docs-nav-mobile">
+      <div class="docs-navicon">
+          <a href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example#" class="docs-navicon__trigger">
+              <div class="docs-navicon__lines">
+                  <span class="docs-navicon__lines--center"></span>
+              </div>
+          </a>
+      </div>
+      <ul class="docs-nav-mobile__menu">
+          <li><form method="get" action="https://docs.sendgrid.com/docs/search"><input type="search" name="q" class="docs-nav-mobile__search"></form></li>
+      <li><a href="https://app.sendgrid.com/" class="sendgrid docs-nav-mobile__signup" data-glinktype="cta-link" data-glinklocation="docs" data-glinkname="sendgrid-app">Dashboard</a></li>
+
+      </ul>
+  </span>
+</nav>
+    </div>
+<div class="toast__container" style="display: block; top: 50px;">
+    
+</div>
+
+<script src="./mohan_files/toast.min.6886d29ef.js.download"></script>
+<link rel="stylesheet" href="./mohan_files/toast.min.6886d29ef.css">
+
+
+
+  
+<div class="docs-layout">
+<div id="consent_blackbar"></div>
+<div id="teconsent" style="display: none;"></div>
+<nav aria-label="breadcrumbs" class="breadcrumbs">
+<a href="https://docs.sendgrid.com/">SendGrid Documentation</a> /
+    
+        <a href="https://docs.sendgrid.com/for-developers">For Developers</a> /
+    
+        <a href="https://docs.sendgrid.com/for-developers/sending-email">Sending Email</a> /
+    
+    <a aria-current="page" href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example">v3 API Python Code Example</a>
+</nav>
+<aside class="docs-layout-sidebar" id="third-pane">
+<div class="inner">
+<div id="on-this-page">
+<h2>On This Page</h2>
+<ul class="docs-sidebar__file-tree menu-accordion expanded" id="doc-navigation" role="menu-accordion" style="display: block;"><li class="code is-selected" id="doc-nav-0">
+            <a class="intrapage" href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example#using-sendgrids-python-library">Using SendGrid's Python Library</a></li></ul>
+</div>
+</div>
+</aside>
+<main class="docs-layout-main docs-layout-multi-columns" style="height: calc(100vh - 6rem);">
+<div class="docs-layout-column docs-layout-three-panes">
+<article class="docs-article docs-prose">
+<header>
+<h1 class="docs-article__title">
+        v3 API Python Code Example
+      </h1>
+</header>
+<section>
+<div class="docs-note docs-note--info">
+<p>We recommend using SendGrid Python, our client library, <a href="https://github.com/sendgrid/sendgrid-python">available on GitHub</a>, with full documentation.</p>
+</div>
+</section>
+<section>
+<div class="docs-note docs-note--info">
+<p>Do you have an <a href="https://app.sendgrid.com/settings/api_keys">API Key</a> yet? If not, go get one. You're going to need it to integrate!</p>
+</div>
+</section>
+<section>
+<div class="markdown">
+<h2 class="docs-article__section-title" id="using-sendgrids-python-library"><a class="toclink" href="https://docs.sendgrid.com/for-developers/sending-email/v3-python-code-example#using-sendgrids-python-library">Using SendGrid's Python Library</a></h2>
+<div class="language-python"><pre class="twlo-code line-numbers language-python" tabindex="0"><code class="language-python"><span class="prism-token prism-comment"># using SendGrid's Python Library</span>
+<span class="prism-token prism-comment"># https://github.com/sendgrid/sendgrid-python</span>
+<span class="prism-token prism-keyword prism-keyword-import">import</span> os
+<span class="prism-token prism-keyword prism-keyword-from">from</span> sendgrid <span class="prism-token prism-keyword prism-keyword-import">import</span> SendGridAPIClient
+<span class="prism-token prism-keyword prism-keyword-from">from</span> sendgrid<span class="prism-token prism-punctuation">.</span>helpers<span class="prism-token prism-punctuation">.</span>mail <span class="prism-token prism-keyword prism-keyword-import">import</span> Mail
+
+message <span class="prism-token prism-operator">=</span> <span class="prism-token prism-function">Mail</span><span class="prism-token prism-punctuation">(</span>
+    <span class="prism-token prism-parameter prism-variable">from_email</span><span class="prism-token prism-operator">=</span><span class="prism-token prism-string">'from_email@example.com'</span><span class="prism-token prism-punctuation">,</span>
+    <span class="prism-token prism-parameter prism-variable">to_emails</span><span class="prism-token prism-operator">=</span><span class="prism-token prism-string">'to@example.com'</span><span class="prism-token prism-punctuation">,</span>
+    <span class="prism-token prism-parameter prism-variable">subject</span><span class="prism-token prism-operator">=</span><span class="prism-token prism-string">'Sending with Twilio SendGrid is Fun'</span><span class="prism-token prism-punctuation">,</span>
+    <span class="prism-token prism-parameter prism-variable">html_content</span><span class="prism-token prism-operator">=</span><span class="prism-token prism-string">'&lt;strong&gt;and easy to do anywhere, even with Python&lt;/strong&gt;'</span><span class="prism-token prism-punctuation">)</span>
+<span class="prism-token prism-keyword prism-keyword-try">try</span><span class="prism-token prism-punctuation">:</span>
+    sg <span class="prism-token prism-operator">=</span> <span class="prism-token prism-function">SendGridAPIClient</span><span class="prism-token prism-punctuation">(</span>os<span class="prism-token prism-punctuation">.</span>environ<span class="prism-token prism-punctuation">.</span><span class="prism-token prism-function">get</span><span class="prism-token prism-punctuation">(</span><span class="prism-token prism-string">'SENDGRID_API_KEY'</span><span class="prism-token prism-punctuation">)</span><span class="prism-token prism-punctuation">)</span>
+    response <span class="prism-token prism-operator">=</span> sg<span class="prism-token prism-punctuation">.</span><span class="prism-token prism-function">send</span><span class="prism-token prism-punctuation">(</span>message<span class="prism-token prism-punctuation">)</span>
+    <span class="prism-token prism-keyword prism-keyword-print">print</span><span class="prism-token prism-punctuation">(</span>response<span class="prism-token prism-punctuation">.</span>status_code<span class="prism-token prism-punctuation">)</span>
+    <span class="prism-token prism-keyword prism-keyword-print">print</span><span class="prism-token prism-punctuation">(</span>response<span class="prism-token prism-punctuation">.</span>body<span class="prism-token prism-punctuation">)</span>
+    <span class="prism-token prism-keyword prism-keyword-print">print</span><span class="prism-token prism-punctuation">(</span>response<span class="prism-token prism-punctuation">.</span>headers<span class="prism-token prism-punctuation">)</span>
+<span class="prism-token prism-keyword prism-keyword-except">except</span> Exception <span class="prism-token prism-keyword prism-keyword-as">as</span> e<span class="prism-token prism-punctuation">:</span>
+    <span class="prism-token prism-keyword prism-keyword-print">print</span><span class="prism-token prism-punctuation">(</span>e<span class="prism-token prism-punctuation">.</span>message<span class="prism-token prism-punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><span class="clipboard"><span class="clipboard-label hidden"></span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="clipboard-icon"><path fill="currentColor" d="M16 7v2h-5v2L8 8l3-3v2h5zM8 5H4v1h4V5zm-4 7h5v-1H4v1zm9-1h1v3H2V0h12v5h-1V3H3v10h10v-2zM3 2h10V1H3v1zm1 7v1h3V9H4zm0-1h3V7H4v1z"></path></svg></span></div>
+</div>
+</section>
+<div class="rating-wrapper">
+<div class="rating-box">
+<fieldset class="star-rating js-star-rating">
+<legend class="rating-label">Rate this page:</legend>
+<div class="js-rating-container">
+<input id="rating1-1" name="rating" type="radio" value="1">
+<label for="rating1-1"><span>1</span></label>
+<input id="rating2-1" name="rating" type="radio" value="2">
+<label for="rating2-1"><span>2</span></label>
+<input id="rating3-1" name="rating" type="radio" value="3">
+<label for="rating3-1"><span>3</span></label>
+<input id="rating4-1" name="rating" type="radio" value="4">
+<label for="rating4-1"><span>4</span></label>
+<input id="rating5-1" name="rating" type="radio" value="5">
+<label for="rating5-1"><span>5</span></label>
+</div>
+</fieldset>
+</div>
+</div>
+<section>
+<div class="docs-help">
+<h4 class="docs-help__title">Need some help?</h4>
+<p class="docs-help__body">
+			We all do sometimes. Get help now from the <a href="https://support.sendgrid.com/hc/en-us">Twilio SendGrid Support Team</a>. </p> <p class="docs-help__body"> Running into a coding hurdle? Lean on the wisdom of the crowd by browsing the <a href="http://stackoverflow.com/questions/tagged/sendgrid">SendGrid tag</a> on Stack Overflow or visiting Twilio's <a href="https://stackoverflow.com/collectives/twilio">Stack Overflow Collective</a>.
+		</p>
+</div>
+</section>
+<footer class="docs-article-footer">
+<ul class="docs-article-footer__list">
+<li class="docs-article-footer__list-item">
+<a class="docs-article-footer__link" href="https://docs.sendgrid.com/legal/tos">Terms of Service</a>
+</li>
+<li class="docs-article-footer__list-item">
+<a class="docs-article-footer__link" href="https://docs.sendgrid.com/legal/privacy">Privacy Policy</a>
+</li>
+<li class="docs-article-footer__list-item">Copyright © 2022 Twilio Inc.</li>
+</ul>
+</footer>
+</article>
+<aside id="third-pane">
+<div class="inner">
+<div class="rating-wrapper">
+<div class="rating-box">
+<fieldset class="star-rating js-star-rating">
+<legend class="rating-label">Rate this page:</legend>
+<div class="js-rating-container">
+<input id="rating1-2" name="rating" type="radio" value="1">
+<label for="rating1-2"><span>1</span></label>
+<input id="rating2-2" name="rating" type="radio" value="2">
+<label for="rating2-2"><span>2</span></label>
+<input id="rating3-2" name="rating" type="radio" value="3">
+<label for="rating3-2"><span>3</span></label>
+<input id="rating4-2" name="rating" type="radio" value="4">
+<label for="rating4-2"><span>4</span></label>
+<input id="rating5-2" name="rating" type="radio" value="5">
+<label for="rating5-2"><span>5</span></label>
+</div>
+</fieldset>
+</div>
+</div>
+<div id="on-this-page">
+<h2>On This Page</h2>
+<ul class="docs-sidebar__file-tree menu-accordion expanded" id="doc-navigation" role="menu-accordion"></ul>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<div class="twlo-modal-overlay" id="feedback-form-modal">
+<form action="https://docs.sendgrid.com/docs/submit-feedback" id="feedback" method="POST">
+<div class="twlo-modal">
+<span class="twlo-modal__close close">
+<svg class="icon-close" fill="#233659" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 4l-5 5 5 5v1h-1l-5-5-5 5H3v-1l5-5-5-5V3h1l5 5 5-5h1v1z"></path>
+</svg>
+</span>
+<h2 class="twlo-modal__title">Thank you for your feedback!</h2>
+<p class="twlo-modal__body">
+  Please select the reason(s) for your feedback. The additional information you provide helps us improve our documentation:
+</p>
+<input name="star_rating" type="hidden" value="">
+<input name="feedback_id" type="hidden" value="">
+<input name="page" type="hidden" value="23947">
+<input name="page_live_revision" type="hidden" value="">
+<input name="requested_path" type="hidden" value="/for-developers/sending-email/v3-python-code-example">
+<input name="csrfmiddlewaretoken" type="hidden" value="uxVLnpDcH83EooovbPF6jaUUuEFgbyqyEThkGK3vQMTY2ODQwMDI1NC4xMzExOTQ">
+<input name="recaptcha" type="hidden" value="">
+<div class="feedback-countries hidden">
+<label for="countries">If applicable fill in the countries where you are using Twilio</label><br>
+<input id="countries" name="countries" value=""><br>
+</div>
+<div class="twlo-modal__form">
+<div id="feedback-negative-form-fields">
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-negative-form-option-one" name="negative_first_option" type="checkbox">
+<label for="feedback-negative-form-option-one">Missing information or code</label>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedbac-knegative-form-option-two" name="negative_second_option" type="checkbox">
+<label for="feedbac-knegative-form-option-two">Content is confusing or hard to follow</label>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-negative-form-option-three" name="negative_third_option" type="checkbox">
+<label for="feedback-negative-form-option-three">Inaccurate or outdated information</label>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-negative-form-option-four" name="negative_fourth_option" type="checkbox">
+<label for="feedback-negative-form-option-four">Broken link or typo</label>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-negative-form-option-five" name="negative_fifth_option" type="checkbox">
+<label for="feedback-negative-form-option-five">Did not solve my problem</label>
+</div>
+</div>
+<div id="feedback-positive-form-fields">
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-positive-form-option-one" name="positive_first_option" type="checkbox">
+<label for="feedback-positive-form-option-one">Content is easy to follow</label>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-positive-form-option-two" name="positive_second_option" type="checkbox">
+<label for="feedback-positive-form-option-two">Solved my problem</label>
+</div>
+</div>
+<div class="twlo-modal__form-options">
+<input class="twlo-modal__form-options-input" id="feedback-form-other-option" name="other_option" type="checkbox">
+<label for="feedback-form-other-option">Other</label>
+</div>
+</div>
+<textarea class="twlo-modal__textarea" id="feedback-form-text-area" name="comment" placeholder="Suggestions..."></textarea>
+<button class="twlo-btn" id="feedback-submit-btn" type="button">Send your suggestions</button>
+<div class="twlo-modal__footer">
+<div class="talk-to-support">
+<h6>
+<a href="https://www.twilio.com/console/support/tickets/create" target="_blank">Need help? Talk to Support</a>
+</h6>
+</div>
+<div class="rc-anchor-pt">
+            Protected by reCAPTCHA – <a href="https://www.google.com/intl/en/policies/privacy/" target="_blank">Privacy</a><span aria-hidden="true" role="presentation"> - </span><a href="https://www.google.com/intl/en/policies/terms/" target="_blank">Terms</a>
+</div>
+</div>
+</div>
+</form>
+</div>
+<div class="twlo-modal-overlay" id="sending-feedback-modal">
+<div class="twlo-loading loading-no-bg">
+<div class="twlo-loading__inner">
+<div class="twlo-loading__spinner">
+<svg>
+<circle cx="25" cy="25" fill="none" r="20" stroke-miterlimit="10" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="twlo-loading__message">
+          Sending your feedback...
+        </div>
+</div>
+</div>
+</div>
+<div class="twlo-modal-overlay" id="feedback-sent-modal">
+<div class="twlo-modal__submit-message">
+      🎉 Thank you for your feedback!
+    </div>
+</div>
+<div class="twlo-modal-overlay" id="feedback-error-modal">
+<div class="twlo-modal__submit-message">
+      Something went wrong. Please try again.
+    </div>
+</div>
+<div class="twlo-modal-overlay" id="feedback-referral-modal">
+<div class="twlo-modal referral">
+<span class="twlo-modal__close close">
+<svg class="icon-close" fill="#233659" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 4l-5 5 5 5v1h-1l-5-5-5 5H3v-1l5-5-5-5V3h1l5 5 5-5h1v1z"></path>
+</svg>
+</span>
+<h2 class="twlo-modal__title">Thanks for your feedback!</h2>
+<p class="twlo-modal__body">Refer us and get $10 in 3 simple steps!</p>
+<div class="steps-container">
+<div class="step">
+<h4>Step 1</h4>
+<div class="card">Get link</div>
+<p>
+            Get a free personal referral link <a href="https://www.twilio.com/console?modal=referral" target="_blank"> here </a>
+</p>
+</div>
+<div class="step">
+<h4>Step 2</h4>
+<div class="card">Give $10</div>
+<p>Your user signs up and upgrade using link</p>
+</div>
+<div class="step">
+<h4>Step 3</h4>
+<div class="card">Get $10</div>
+<p>
+            1,250 free SMSes <br>OR 1,000 free voice mins <br>OR 12,000 chats <br> OR more
+          </p>
+</div>
+</div>
+<div class="twlo-modal__footer">
+<a href="https://www.twilio.com/blog/announcing-twilio-referral-program" target="_blank">Learn more about the referral program</a>
+</div>
+</div>
+</div>
+<script src="./mohan_files/vendor.min.6886d29ef.js.download"></script>
+<!-- Mixpanel -->
+<script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+  typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,
+    e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+    mixpanel.init("f71c19735fa6ecc5225ff563285e1794");
+    </script>
+<!-- Eloqua -->
+<script type="text/javascript">
+    var _elqQ = _elqQ || [];
+    _elqQ.push(['elqSetSiteId', '815114181']);
+    _elqQ.push(['elqTrackPageView']);
+    _elqQ.push(['elqUseFirstPartyCookie', 'www.twilio.com']);
+
+    (function () {
+      function async_load() {
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+        s.src = '//img03.en25.com/i/elqCfg.min.js';
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+      }
+      if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+      else if (window.attachEvent) window.attachEvent('onload', async_load);
+    })();
+    </script>
+<!-- Transifex -->
+<script type="text/javascript">
+    window.liveSettings = {
+      api_key: '4c06c1c5a6b341e591d969476fe2675f'
+    };
+    </script>
+<script src="./mohan_files/live.js.download" type="text/javascript"></script>
+<style>
+    .txlive-langselector { display: none; }
+    </style>
+<script src="./mohan_files/docs.min.6886d29ef.js.download"></script>
+<script>
+  var _C={REDACTION_COPY:{EMAIL:"EMAIL_REDACTED"}};function extractParams(){for(var b=[],a,c=/([^&=]+)=?([^&]*)/g,d=window.location.search.substring(1);a=c.exec(d);)b.push([a[1],a[2]]);return b}var urlParams=extractParams(),emailRegex=/(([^<>()\[\]\\.,;:\s@"%]+(\.[^<>()\[\]\\.,;:\s@"%]+)*)|(".+"))(@|%40)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/g;
+  urlParams=urlParams.map(function(b){return b.map(function(a){_redactedValue=decodeURIComponent(a).replace(emailRegex,_C.REDACTION_COPY.EMAIL);return _redactedValue===_C.REDACTION_COPY.EMAIL?_redactedValue:a})});
+  function rewriteURL(b){if(0===b.length)return window.location.protocol+"//"+window.location.host+window.location.pathname+window.location.hash;for(var a="?",c=0;c<b.length;c++)0<c&&(a=a.concat("\x26")),a=a.concat(b[c][0]+"\x3d"+b[c][1]);return window.location.protocol+"//"+window.location.host+window.location.pathname+a+window.location.hash}var newURL=rewriteURL(urlParams);newURL!==window.location.href&&window.history.replaceState({},document.title,newURL);
+  var newTitle=document.title.replace(emailRegex,_C.REDACTION_COPY.EMAIL);newTitle!==document.title&&(document.title=newTitle);dataLayer.push({event:"piiRedacted"});
+</script>
+<script async="async" defer="defer" src="./mohan_files/notice"></script>
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M7Z3WSH"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;j.onerror=function(){if(w.disableAF){w.disableAF();}}
+      ;f.parentNode.insertBefore(j,f);
+      })(window, document, 'script', 'dataLayer', 'GTM-M7Z3WSH');</script>
+      <!-- End Google Tag Manager >
+    <!-- Initialize recaptcha v3 -->
+<script src="./mohan_files/api.js.download"></script>
+<script type="application/javascript">window.reCAPTCHASiteKey = "6LeB76EdAAAAAMFifakt7llHwwjJfXE2goTVnoKT";</script>
+    <!--  Initialize docsearch -->
+    <script type="text/javascript" src="./mohan_files/docsearch.min.js.download"></script>
+    <script type="text/javascript">
+    if (document.getElementById('docsearch')) {
+        docsearch({
+            appId: window.twilio.DOCSEARCH_APP_ID,
+            apiKey: window.twilio.DOCSEARCH_API_KEY,
+            indexName: 'twilio',
+            inputSelector: '#docsearch',
+            debug: false, // Set debug to true if you want to inspect the dropdown
+            algoliaOptions: {
+                hitsPerPage: 6
+            }
+        });
+    }
+    </script>
+    <script type="text/javascript">
+      /**
+	      * Fix for anchor links
+	      * - Fix for anchor links in navs -> all DOM needs to be loaded (window.onload)
+	      * - Fix for anchors on Safari mobile ->  needs scrollIntoView to the hash
+        * - Fix for navigation browser buttons -> scrollIntoView to the hash and title
+	    **/
+      window.onload = function(){
+        window.onhashchange = (event) => {
+          if (window.location.hash){
+            document.querySelector(window.location.hash).scrollIntoView(true);
+          }
+          else{
+            const pageTitle = document.querySelector('h1');
+            if(pageTitle){
+              pageTitle.scrollIntoView(true);
+            }
+          }
+        }
+      }
+    </script>
+    
+    
+  
+  <script>
+    const algoliaSettings = (selector, options) => {
+      return {
+            appId: window.twilio.DOCSEARCH_APP_ID,
+            apiKey: window.twilio.DOCSEARCH_API_KEY,
+            indexName: 'twilio',
+            debug: false, // Set debug to true if you want to inspect the dropdown
+            inputSelector: selector,
+            algoliaOptions: {
+                hitsPerPage: 6,
+                ...options
+            }
+        };
+    }
+    if (document.getElementById('sendgrid-search-input')) {
+        const filters = {facetFilters: ["tags:sendgrid"]};
+        docsearch(algoliaSettings('#sendgrid-search-input', filters));
+    }
+    if (document.getElementById('docsearch_sendgrid')) {
+        const filters = {facetFilters: ["tags:sendgrid"]};
+        docsearch(algoliaSettings('#docsearch_sendgrid', filters));
+    }
+  </script>
+  
+  
+  <script> fitvids() </script>
+
+
+    <script type="text/javascript">
+  (function(h,o,u,n,d) {
+    h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+    d=o.createElement(u);d.async=1;d.src=n
+    n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+  })(window,document,'script','https://www.datadoghq-browser-agent.com/datadog-rum-v4.js','DD_RUM')
+  DD_RUM.onReady(function() {
+    DD_RUM.init({
+    applicationId: 'a0206a0e-ef93-42ec-9136-f4c4897ec78e',
+    clientToken: 'pub4860256025c6e6986794af73b438f413',
+    site: 'datadoghq.com',
+    service:'twilio-docs',
+    env:'prod',
+    version: '6886d29ef',
+    sampleRate: 100,
+    replaySampleRate: 0,
+    trackInteractions: false,
+    });
+  })
+</script>
